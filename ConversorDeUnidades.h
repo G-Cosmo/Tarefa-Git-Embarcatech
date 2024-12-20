@@ -26,14 +26,11 @@ typedef struct s_ConversorDeUnidades
 {
     double  entrada;
     int     unidade;
-    int     unidade_destino;
-    double  valor_si; 
-    double  resultado; 
-    
+    double  valor_si;     
 }           t_ConversorDeUnidades;
 
 
-int     converterComprimento();
+void     ConversorDeComprimento(void);
 void    ConversorDeVolume(void);
 
 

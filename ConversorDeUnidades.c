@@ -22,7 +22,7 @@ int main(){
 
     do
     {
-        system("cls");
+        system("clear");
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
         //printf("outras conversões");
@@ -35,8 +35,12 @@ int main(){
         switch (opc)
         {
             case 1:
-                converterComprimento();
+                ConversorDeComprimento();
                 break;
+            case 2:
+                ConversorDeVolume();
+                break; 
+                  
             default:
                 break;
                 
@@ -46,22 +50,22 @@ int main(){
        
 }
 
-int converterComprimento(){
+void ConversorDeComprimento(void){
 
-    double valor, valorSI;
-    int opc, unidade;
-    char prefixo;
+    double valor, valorSI = 0;
+    int opc, unidade = 0;
+    char prefixo = 'a';
 
     do
     { 
         do
         {
-            system("cls");
+            system("clear");
 
             printf("Insira o valor que deseja converter: ");
             scanf("%lf", &valor);
 
-            system("cls");
+            system("clear");
 
             printf("Qual a unidade de medida do valor informado? \n");
             printf("1. Metro(m) \n");
@@ -75,12 +79,12 @@ int converterComprimento(){
 
         } while (unidade < 0 || unidade > 5);
 
-        system("cls");
+        system("clear");
 
         switch(unidade)
         {
             case 0:
-                return 0;
+                break;
             case 1:
                 valorSI = valor;
                 prefixo = ' ';
@@ -101,19 +105,18 @@ int converterComprimento(){
                 valorSI = valor * pow(10, -6);
                 prefixo = 'u';
                 break;
-
         }
            
 
         printf("Valor no sistema internacional de unidades: %lf m\n", valorSI);
-        printf(" %lf %cm ----> %lf Km\n", valor, prefixo, valorSI*pow(10,-3));
-        printf(" %lf %cm ----> %lf cm\n", valor, prefixo, valorSI*pow(10,2));
-        printf(" %lf %cm ----> %lf mm\n", valor, prefixo, valorSI*pow(10,3));
-        printf(" %lf %cm ----> %lf um\n", valor, prefixo, valorSI*pow(10,6));
+        printf(" %.6lf %cm ----> %.6lf Km\n", valor, prefixo, valorSI*pow(10,-3));
+        printf(" %.6lf %cm ----> %.6lf cm\n", valor, prefixo, valorSI*pow(10,2));
+        printf(" %.6lf %cm ----> %.6lf mm\n", valor, prefixo, valorSI*pow(10,3));
+        printf(" %.6lf %cm ----> %.6lf um\n", valor, prefixo, valorSI*pow(10,6));
         printf("\n\nDigite 1 para realizar uma nova conversao de comprimento ou outro valor para retornar ao menu: ");
         scanf("%d", &opc);
 
-    }while(opc == 1);
+    } while(opc == 1);
 
 
 }
@@ -121,57 +124,50 @@ int converterComprimento(){
 
 double VolConverterParaSI(double valor, int unidade) {
     switch (unidade) {
-        case 1: return valor;                  // m³
-        case 2: return valor / 1000;          // L -> m³
-        case 3: return valor / 1000000;       // ml -> m³
-        default: return -1;                   // Unidade inválida
+        case 1:
+            return valor;                  // m³
+        case 2:
+            return valor / 1000;          // L -> m³
+        case 3:
+            return valor / 1000000;       // ml -> m³
+        default:
+            return 0;
     }
-}
 
-double VolConverterDeSI(double valorSI, int unidade_destino) {
-    switch (unidade_destino) {
-        case 1: return valorSI;               // m³
-        case 2: return valorSI * 1000;        // m³ -> L
-        case 3: return valorSI * 1000000;     // m³ -> ml
-        default: return -1;                   // Unidade inválida
-    }
 }
 
 void ConversorDeVolume(void) {
     t_ConversorDeUnidades data;
 
-    system("cls");
+    system("clear");
 
     printf("Insira o valor que deseja converter: ");
     scanf("%lf", &data.entrada);
 
-    system("cls");
+    system("clear");
 
-    printf("Qual a unidade de medida do valor informado? \n");
-    printf("1. Metro Cúbico (m³) \n");
-    printf("2. Litro (L) \n");
-    printf("3. Mililitro (ml) \n");
-    printf("Selecione a unidade: ");
-    scanf("%d", &data.unidade);
-
-    system("cls");
-
-    printf("Para qual unidade deseja converter? \n");
-    printf("1. Metro Cúbico (m³) \n");
-    printf("2. Litro (L) \n");
-    printf("3. Mililitro (ml) \n");
-    printf("Selecione a unidade: ");
-    scanf("%d", &data.unidade_destino);
-
+    while (0 > data.unidade || data.unidade > 3)
+    {
+        printf("Qual a unidade de medida do valor informado? \n");
+        printf("0. Retornar ao menu \n");
+        printf("1. Metro Cúbico (m³) \n");
+        printf("2. Litro (L) \n");
+        printf("3. Mililitro (ml) \n");
+        printf("Selecione a opção: ");
+        scanf("%d", &data.unidade);
+    }
+    
+    system("clear");
+    if (data.unidade == 0)
+        return ;
+    
     data.valor_si = VolConverterParaSI(data.entrada, data.unidade);
-    data.resultado = VolConverterDeSI(data.valor_si, data.unidade_destino);
+    
+    system("clear");
+    printf("Valor no sistema internacional de unidades: %lf m³\n", data.valor_si);
 
-    system("cls");
-    printf("O valor convertido é: %.6lf\n", data.resultado);
+    printf(" Valor em Litro %.6lf L\n",  data.valor_si * 1000.0);
+    printf(" Valor em Mililitro %.6lf ml\n", data.valor_si * 1000000.0);
+
 }
 
-//Km
-//m
-//cm
-//mm
-//um
