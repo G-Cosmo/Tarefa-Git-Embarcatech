@@ -1,68 +1,75 @@
-//Embarcatech
-//Tarefa: Depuração e Versionamento
-//Subgrupo: 6                     
-
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#include <string.h>
-
-int converterComprimento();
-//void cabeçalhoDeFunçãoDeConversão();
-
-void converterPotencia();
+/* ************************************************************************** */
+/*                                                                            */
+/*   Embarcatech - Subgrupo 6                                                 */
+/*   Depuração e Versionamento                                                */
+/*                                                                            */
+/*   ConversorDeUnidades.c                                                    */
+/*                                                  ___         ___    __ __  */
+/*                                                 | __|  ___  |_  )  / // /  */
+/*                                                 | _|  |___|  / /  / // _ \ */
+/*                                                 |___|       /___|/_/ \___/ */
+/*   By: Gcosmo <bielxx94@gmail.com>                                          */
+/*       EderRenato <eder.casar@outlook.com>                                  */
+/*       Silva-Alisson <als987654@gmail.com>                                  */
+/*       sarahmss <smodesto@student.42sp.org.br>                              */
+/*                                                                            */
+/* ************************************************************************** */
+                     
+#include "ConversorDeUnidades.h"
 
 int main(){
     int opc;
 
     do
     {
-
-    
-        system("cls");
+        system("clear");
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
         printf("2. Potência \n");
-        //printf("outras conversões");
+        printf("3. Temperatura \n");
+        printf("4. Volume \n");
+
         printf("0. Sair \n");
         printf("Opcao: ");
         scanf("%d", &opc);
-        //printf("Opcao escolhida: %d", opc);
-
-
+        
         switch (opc)
         {
             case 1:
-                converterComprimento();
+                ConversorDeComprimento();
                 break;
             case 2:
-                converterPotencia();
+                ConversorDePotencia();
                 break;
+            case 3:
+                ConversorDeTemperatura();
+                break;
+            case 4:
+                ConversorDeVolume();
+                break; 
             default:
                 break;
-                
         }
 
     } while (opc != 0);
 }
 
-int converterComprimento(){
+void ConversorDeComprimento(void){
 
-    double valor, valorSI;
-    int opc, unidade;
-    char prefixo;
+    double valor, valorSI = 0;
+    int opc, unidade = 0;
+    char prefixo = 'a';
 
     do
     { 
         do
         {
-            system("cls");
+            system("clear");
 
             printf("Insira o valor que deseja converter: ");
             scanf("%lf", &valor);
 
-            system("cls");
+            system("clear");
 
             printf("Qual a unidade de medida do valor informado? \n");
             printf("1. Metro(m) \n");
@@ -76,12 +83,12 @@ int converterComprimento(){
 
         } while (unidade < 0 || unidade > 5);
 
-        system("cls");
+        system("clear");
 
         switch(unidade)
         {
             case 0:
-                return 0;
+                break;
             case 1:
                 valorSI = valor;
                 prefixo = ' ';
@@ -102,33 +109,30 @@ int converterComprimento(){
                 valorSI = valor * pow(10, -6);
                 prefixo = 'u';
                 break;
-
         }
            
 
         printf("Valor no sistema internacional de unidades: %lf m\n", valorSI);
-        printf(" %lf %cm ----> %lf Km\n", valor, prefixo, valorSI*pow(10,-3));
-        printf(" %lf %cm ----> %lf cm\n", valor, prefixo, valorSI*pow(10,2));
-        printf(" %lf %cm ----> %lf mm\n", valor, prefixo, valorSI*pow(10,3));
-        printf(" %lf %cm ----> %lf um\n", valor, prefixo, valorSI*pow(10,6));
+        printf(" %.6lf %cm ----> %.6lf Km\n", valor, prefixo, valorSI*pow(10,-3));
+        printf(" %.6lf %cm ----> %.6lf cm\n", valor, prefixo, valorSI*pow(10,2));
+        printf(" %.6lf %cm ----> %.6lf mm\n", valor, prefixo, valorSI*pow(10,3));
+        printf(" %.6lf %cm ----> %.6lf um\n", valor, prefixo, valorSI*pow(10,6));
         printf("\n\nDigite 1 para realizar uma nova conversao de comprimento ou outro valor para retornar ao menu: ");
         scanf("%d", &opc);
 
-    }while(opc == 1);
-
-
+    } while(opc == 1);
 }
 
-void converterPotencia(){
+void ConversorDePotencia(void){
     double valor, valorSI;
     int unidade, opc;
     char cUnidade[20];
 
     while(1){
-        system("cls");
+        system("clear");
         printf("Insira o valor que deseja converter: ");
         scanf("%lf", &valor);
-        system("cls");
+        system("clear");
 
         printf("Qual a unidade de medida do valor informado? \n");
         printf("1. Watt(W)\n");
@@ -164,8 +168,102 @@ void converterPotencia(){
     }
 }
 
-//Km
-//m
-//cm
-//mm
-//um
+double VolConverterParaSI(double valor, int unidade) {
+    switch (unidade) {
+        case 1:
+            return valor;                  // m³
+        case 2:
+            return valor / 1000;          // L -> m³
+        case 3:
+            return valor / 1000000;       // ml -> m³
+        default:
+            return 0;
+    }
+
+}
+
+void ConversorDeVolume(void) {
+    double entrada = 0.0;
+    int unidade = -1;
+    double valor_si = 0.0;
+
+    system("clear");
+    printf("Insira o valor que deseja converter: ");
+    scanf("%lf", &entrada);
+
+    while (unidade < 0 || unidade > 3) {
+        system("clear");
+        printf("Qual a unidade de medida do valor informado? \n");
+        printf("0. Retornar ao menu \n");
+        printf("1. Metro Cúbico (m³) \n");
+        printf("2. Litro (L) \n");
+        printf("3. Mililitro (ml) \n");
+        printf("Selecione a opção: ");
+        scanf("%d", &unidade);
+    }
+
+    if (unidade == 0) {
+        return;
+    }
+
+    valor_si = VolConverterParaSI(entrada, unidade);
+
+    system("clear");
+    printf(" Valor em Metros Cúbicos (SI): %.6lf m³\n", valor_si);
+    printf(" Valor em Litros: %.6lf L\n", valor_si * 1000.0);
+    printf(" Valor em Mililitros: %.6lf ml\n", valor_si * 1000000.0);
+    printf("\nPressione qualquer tecla para retornar ao menu.\n");
+
+    getchar();
+    getchar();
+    return;
+}
+
+
+
+void celsiusParaOutros(double celsius, double *fahrenheit, double *kelvin) {
+    *fahrenheit = (celsius * 9 / 5) + 32;
+    *kelvin = celsius + 273.15;
+}
+
+void fahrenheitParaOutros(double fahrenheit, double *celsius, double *kelvin) {
+    *celsius = (fahrenheit - 32) * 5 / 9;
+    *kelvin = (*celsius) + 273.15;
+}
+
+void kelvinParaOutros(double kelvin, double *celsius, double *fahrenheit) {
+    *celsius = kelvin - 273.15;
+    *fahrenheit = (*celsius * 9 / 5) + 32;
+}
+
+void ConversorDeTemperatura() {
+    double temperatura, celsius, fahrenheit, kelvin;
+    int opcao;
+    system("clear");
+    printf("\nEscolha a escala de entrada:\n");
+    printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+
+    printf("Digite o valor da temperatura: ");
+    scanf("%lf", &temperatura);
+
+    if (opcao == 1) {
+        celsiusParaOutros(temperatura, &fahrenheit, &kelvin);
+        printf("\nCelsius: %.2f\nFahrenheit: %.2f\nKelvin: %.2f\n\n", temperatura, fahrenheit, kelvin);
+    } else if (opcao == 2) {
+        fahrenheitParaOutros(temperatura, &celsius, &kelvin);
+        printf("\nFahrenheit: %.2f\nCelsius: %.2f\nKelvin: %.2f\n\n", temperatura, celsius, kelvin);
+    } else if (opcao == 3) {
+        kelvinParaOutros(temperatura, &celsius, &fahrenheit);
+        printf("\nKelvin: %.2f\nCelsius: %.2f\nFahrenheit: %.2f\n\n", temperatura, celsius, fahrenheit);
+    } else {
+        printf("Opção inválida.\n");
+    }
+    
+    printf("\nPressione qualquer tecla para retornar ao menu.\n");
+
+    getchar();
+    getchar();
+}
+
