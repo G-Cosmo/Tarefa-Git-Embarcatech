@@ -25,7 +25,7 @@ int main(){
         system("clear");
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
-        //printf("outras conversões");
+        printf("4. Volume \n");
         printf("0. Sair \n");
         printf("Opcao: ");
         scanf("%d", &opc);
@@ -37,7 +37,7 @@ int main(){
             case 1:
                 ConversorDeComprimento();
                 break;
-            case 2:
+            case 4:
                 ConversorDeVolume();
                 break; 
                   
