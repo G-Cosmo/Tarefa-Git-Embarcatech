@@ -1,22 +1,27 @@
-//Embarcatech
-//Tarefa: Depuração e Versionamento
-//Subgrupo: 6                     
-
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-
-int converterComprimento();
-//void cabeçalhoDeFunçãoDeConversão();
+/* ************************************************************************** */
+/*                                                                            */
+/*   Embarcatech - Subgrupo 6                                                 */
+/*   Depuração e Versionamento                                                */
+/*                                                                            */
+/*   ConversorDeUnidades.c                                                    */
+/*                                                  ___         ___    __ __  */
+/*                                                 | __|  ___  |_  )  / // /  */
+/*                                                 | _|  |___|  / /  / // _ \ */
+/*                                                 |___|       /___|/_/ \___/ */
+/*   By: Gcosmo <bielxx94@gmail.com>                                          */
+/*       EderRenato <eder.casar@outlook.com>                                  */
+/*       Silva-Alisson <als987654@gmail.com>                                  */
+/*       sarahmss <smodesto@student.42sp.org.br>                              */
+/*                                                                            */
+/* ************************************************************************** */
+                     
+#include "ConversorDeUnidades.h"
 
 int main(){
     int opc;
 
     do
     {
-
-    
         system("cls");
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
@@ -113,6 +118,57 @@ int converterComprimento(){
 
 }
 
+
+double VolConverterParaSI(double valor, int unidade) {
+    switch (unidade) {
+        case 1: return valor;                  // m³
+        case 2: return valor / 1000;          // L -> m³
+        case 3: return valor / 1000000;       // ml -> m³
+        default: return -1;                   // Unidade inválida
+    }
+}
+
+double VolConverterDeSI(double valorSI, int unidade_destino) {
+    switch (unidade_destino) {
+        case 1: return valorSI;               // m³
+        case 2: return valorSI * 1000;        // m³ -> L
+        case 3: return valorSI * 1000000;     // m³ -> ml
+        default: return -1;                   // Unidade inválida
+    }
+}
+
+void ConversorDeVolume(void) {
+    t_ConversorDeUnidades data;
+
+    system("cls");
+
+    printf("Insira o valor que deseja converter: ");
+    scanf("%lf", &data.entrada);
+
+    system("cls");
+
+    printf("Qual a unidade de medida do valor informado? \n");
+    printf("1. Metro Cúbico (m³) \n");
+    printf("2. Litro (L) \n");
+    printf("3. Mililitro (ml) \n");
+    printf("Selecione a unidade: ");
+    scanf("%d", &data.unidade);
+
+    system("cls");
+
+    printf("Para qual unidade deseja converter? \n");
+    printf("1. Metro Cúbico (m³) \n");
+    printf("2. Litro (L) \n");
+    printf("3. Mililitro (ml) \n");
+    printf("Selecione a unidade: ");
+    scanf("%d", &data.unidade_destino);
+
+    data.valor_si = VolConverterParaSI(data.entrada, data.unidade);
+    data.resultado = VolConverterDeSI(data.valor_si, data.unidade_destino);
+
+    system("cls");
+    printf("O valor convertido é: %.6lf\n", data.resultado);
+}
 
 //Km
 //m
