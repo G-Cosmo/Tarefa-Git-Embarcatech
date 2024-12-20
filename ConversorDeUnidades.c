@@ -8,6 +8,7 @@
 #include<math.h>
 
 int converterComprimento();
+void converterTemperatura();
 //void cabeçalhoDeFunçãoDeConversão();
 
 int main(){
@@ -17,9 +18,10 @@ int main(){
     {
 
     
-        system("cls");
+        
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
+        printf("2. Temperatura \n");
         //printf("outras conversões");
         printf("0. Sair \n");
         printf("Opcao: ");
@@ -31,6 +33,9 @@ int main(){
         {
             case 1:
                 converterComprimento();
+                break;
+            case 2:
+                converterTemperatura();
                 break;
             default:
                 break;
@@ -109,10 +114,48 @@ int converterComprimento(){
         scanf("%d", &opc);
 
     }while(opc == 1);
-
-
 }
 
+void celsiusParaOutros(double celsius, double *fahrenheit, double *kelvin) {
+    *fahrenheit = (celsius * 9 / 5) + 32;
+    *kelvin = celsius + 273.15;
+}
+
+void fahrenheitParaOutros(double fahrenheit, double *celsius, double *kelvin) {
+    *celsius = (fahrenheit - 32) * 5 / 9;
+    *kelvin = (*celsius) + 273.15;
+}
+
+void kelvinParaOutros(double kelvin, double *celsius, double *fahrenheit) {
+    *celsius = kelvin - 273.15;
+    *fahrenheit = (*celsius * 9 / 5) + 32;
+}
+
+void converterTemperatura() {
+    double temperatura, celsius, fahrenheit, kelvin;
+    int opcao;
+    system("cls");
+    printf("\nEscolha a escala de entrada:\n");
+    printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+
+    printf("Digite o valor da temperatura: ");
+    scanf("%lf", &temperatura);
+
+    if (opcao == 1) {
+        celsiusParaOutros(temperatura, &fahrenheit, &kelvin);
+        printf("\nCelsius: %.2f\nFahrenheit: %.2f\nKelvin: %.2f\n\n", temperatura, fahrenheit, kelvin);
+    } else if (opcao == 2) {
+        fahrenheitParaOutros(temperatura, &celsius, &kelvin);
+        printf("\nFahrenheit: %.2f\nCelsius: %.2f\nKelvin: %.2f\n\n", temperatura, celsius, kelvin);
+    } else if (opcao == 3) {
+        kelvinParaOutros(temperatura, &celsius, &fahrenheit);
+        printf("\nKelvin: %.2f\nCelsius: %.2f\nFahrenheit: %.2f\n\n", temperatura, celsius, fahrenheit);
+    } else {
+        printf("Opção inválida.\n");
+    }
+}
 
 //Km
 //m
