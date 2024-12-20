@@ -23,17 +23,10 @@
 #include<math.h>
 #include <string.h>
 
-typedef struct s_ConversorDeUnidades
-{
-    double  entrada;
-    int     unidade;
-    double  valor_si;     
-}           t_ConversorDeUnidades;
-
-
 void    ConversorDeComprimento(void);
 void    ConversorDeVolume(void);
 void    ConversorDePotencia(void);
+void    ConversorDeTemperatura(void);
 
 
 #endif

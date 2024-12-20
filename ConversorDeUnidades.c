@@ -26,14 +26,13 @@ int main(){
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
         printf("2. Potência \n");
+        printf("3. Temperatura \n");
         printf("4. Volume \n");
-        //printf("outras conversões");
+
         printf("0. Sair \n");
         printf("Opcao: ");
         scanf("%d", &opc);
-        //printf("Opcao escolhida: %d", opc);
-
-
+        
         switch (opc)
         {
             case 1:
@@ -42,12 +41,14 @@ int main(){
             case 2:
                 ConversorDePotencia();
                 break;
+            case 3:
+                ConversorDeTemperatura();
+                break;
             case 4:
                 ConversorDeVolume();
                 break; 
             default:
                 break;
-                
         }
 
     } while (opc != 0);
@@ -182,37 +183,87 @@ double VolConverterParaSI(double valor, int unidade) {
 }
 
 void ConversorDeVolume(void) {
-    t_ConversorDeUnidades data;
+    double entrada = 0.0;
+    int unidade = -1;
+    double valor_si = 0.0;
 
     system("clear");
-
     printf("Insira o valor que deseja converter: ");
-    scanf("%lf", &data.entrada);
+    scanf("%lf", &entrada);
 
-    system("clear");
-
-    while (0 > data.unidade || data.unidade > 3)
-    {
+    while (unidade < 0 || unidade > 3) {
+        system("clear");
         printf("Qual a unidade de medida do valor informado? \n");
         printf("0. Retornar ao menu \n");
         printf("1. Metro Cúbico (m³) \n");
         printf("2. Litro (L) \n");
         printf("3. Mililitro (ml) \n");
         printf("Selecione a opção: ");
-        scanf("%d", &data.unidade);
+        scanf("%d", &unidade);
+    }
+
+    if (unidade == 0) {
+        return;
+    }
+
+    valor_si = VolConverterParaSI(entrada, unidade);
+
+    system("clear");
+    printf(" Valor em Metros Cúbicos (SI): %.6lf m³\n", valor_si);
+    printf(" Valor em Litros: %.6lf L\n", valor_si * 1000.0);
+    printf(" Valor em Mililitros: %.6lf ml\n", valor_si * 1000000.0);
+    printf("\nPressione qualquer tecla para retornar ao menu.\n");
+
+    getchar();
+    getchar();
+    return;
+}
+
+
+
+void celsiusParaOutros(double celsius, double *fahrenheit, double *kelvin) {
+    *fahrenheit = (celsius * 9 / 5) + 32;
+    *kelvin = celsius + 273.15;
+}
+
+void fahrenheitParaOutros(double fahrenheit, double *celsius, double *kelvin) {
+    *celsius = (fahrenheit - 32) * 5 / 9;
+    *kelvin = (*celsius) + 273.15;
+}
+
+void kelvinParaOutros(double kelvin, double *celsius, double *fahrenheit) {
+    *celsius = kelvin - 273.15;
+    *fahrenheit = (*celsius * 9 / 5) + 32;
+}
+
+void ConversorDeTemperatura() {
+    double temperatura, celsius, fahrenheit, kelvin;
+    int opcao;
+    system("clear");
+    printf("\nEscolha a escala de entrada:\n");
+    printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+
+    printf("Digite o valor da temperatura: ");
+    scanf("%lf", &temperatura);
+
+    if (opcao == 1) {
+        celsiusParaOutros(temperatura, &fahrenheit, &kelvin);
+        printf("\nCelsius: %.2f\nFahrenheit: %.2f\nKelvin: %.2f\n\n", temperatura, fahrenheit, kelvin);
+    } else if (opcao == 2) {
+        fahrenheitParaOutros(temperatura, &celsius, &kelvin);
+        printf("\nFahrenheit: %.2f\nCelsius: %.2f\nKelvin: %.2f\n\n", temperatura, celsius, kelvin);
+    } else if (opcao == 3) {
+        kelvinParaOutros(temperatura, &celsius, &fahrenheit);
+        printf("\nKelvin: %.2f\nCelsius: %.2f\nFahrenheit: %.2f\n\n", temperatura, celsius, fahrenheit);
+    } else {
+        printf("Opção inválida.\n");
     }
     
-    system("clear");
-    if (data.unidade == 0)
-        return ;
-    
-    data.valor_si = VolConverterParaSI(data.entrada, data.unidade);
-    
-    system("clear");
-    printf("Valor no sistema internacional de unidades: %lf m³\n", data.valor_si);
+    printf("\nPressione qualquer tecla para retornar ao menu.\n");
 
-    printf(" Valor em Litro %.6lf L\n",  data.valor_si * 1000.0);
-    printf(" Valor em Mililitro %.6lf ml\n", data.valor_si * 1000000.0);
-
+    getchar();
+    getchar();
 }
 
