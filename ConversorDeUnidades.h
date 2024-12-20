@@ -18,9 +18,10 @@
 #ifndef CONVERSOR_H
 # define CONVERSOR_H
 
-#include    <stdio.h>
-#include    <stdlib.h>
-#include    <math.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include <string.h>
 
 typedef struct s_ConversorDeUnidades
 {
@@ -30,8 +31,9 @@ typedef struct s_ConversorDeUnidades
 }           t_ConversorDeUnidades;
 
 
-void     ConversorDeComprimento(void);
+void    ConversorDeComprimento(void);
 void    ConversorDeVolume(void);
+void    ConversorDePotencia(void);
 
 
 #endif
