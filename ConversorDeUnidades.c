@@ -12,6 +12,7 @@
 /*       EderRenato <eder.casar@outlook.com>                                  */
 /*       Silva-Alisson <als987654@gmail.com>                                  */
 /*       sarahmss <smodesto@student.42sp.org.br>                              */
+/*       MelkBraga <melksb@hotmail.com>                                       */
 /*                                                                            */
 /* ************************************************************************** */
                      
@@ -22,12 +23,13 @@ int main(){
 
     do
     {
-        system("clear");
+        system("cls");
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
-        printf("2. Potência \n");
+        printf("2. Potencia \n");
         printf("3. Temperatura \n");
         printf("4. Volume \n");
+        printf("5. Velocidade\n");
 
         printf("0. Sair \n");
         printf("Opcao: ");
@@ -47,6 +49,9 @@ int main(){
             case 4:
                 ConversorDeVolume();
                 break; 
+            case 5:
+                ConversorDeVelocidade();
+                break; 
             default:
                 break;
         }
@@ -64,12 +69,12 @@ void ConversorDeComprimento(void){
     { 
         do
         {
-            system("clear");
+            system("cls");
 
             printf("Insira o valor que deseja converter: ");
             scanf("%lf", &valor);
 
-            system("clear");
+            system("cls");
 
             printf("Qual a unidade de medida do valor informado? \n");
             printf("1. Metro(m) \n");
@@ -83,12 +88,12 @@ void ConversorDeComprimento(void){
 
         } while (unidade < 0 || unidade > 5);
 
-        system("clear");
+        system("cls");
 
         switch(unidade)
         {
             case 0:
-                break;
+                return;
             case 1:
                 valorSI = valor;
                 prefixo = ' ';
@@ -129,10 +134,10 @@ void ConversorDePotencia(void){
     char cUnidade[20];
 
     while(1){
-        system("clear");
+        system("cls");
         printf("Insira o valor que deseja converter: ");
         scanf("%lf", &valor);
-        system("clear");
+        system("cls");
 
         printf("Qual a unidade de medida do valor informado? \n");
         printf("1. Watt(W)\n");
@@ -187,12 +192,12 @@ void ConversorDeVolume(void) {
     int unidade = -1;
     double valor_si = 0.0;
 
-    system("clear");
+    system("cls");
     printf("Insira o valor que deseja converter: ");
     scanf("%lf", &entrada);
 
     while (unidade < 0 || unidade > 3) {
-        system("clear");
+        system("cls");
         printf("Qual a unidade de medida do valor informado? \n");
         printf("0. Retornar ao menu \n");
         printf("1. Metro Cúbico (m³) \n");
@@ -208,7 +213,7 @@ void ConversorDeVolume(void) {
 
     valor_si = VolConverterParaSI(entrada, unidade);
 
-    system("clear");
+    system("cls");
     printf(" Valor em Metros Cúbicos (SI): %.6lf m³\n", valor_si);
     printf(" Valor em Litros: %.6lf L\n", valor_si * 1000.0);
     printf(" Valor em Mililitros: %.6lf ml\n", valor_si * 1000000.0);
@@ -239,7 +244,7 @@ void kelvinParaOutros(double kelvin, double *celsius, double *fahrenheit) {
 void ConversorDeTemperatura() {
     double temperatura, celsius, fahrenheit, kelvin;
     int opcao;
-    system("clear");
+    system("cls");
     printf("\nEscolha a escala de entrada:\n");
     printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
     printf("Opcao: ");
@@ -267,3 +272,63 @@ void ConversorDeTemperatura() {
     getchar();
 }
 
+void ConversorDeVelocidade(void) {
+
+    double valor, resultado1, resultado2;
+    int unidade = 0, opc;
+
+    do
+    {
+        do
+        {
+            system("cls");
+
+            printf("Insira o valor que deseja converter: ");
+            scanf("%lf", &valor);
+
+            system("cls");
+
+            printf("Qual a unidade de medida do valor informado? \n");
+            printf("1. Quilometro por hora (km/h) \n");
+            printf("2. Metro por segundo (m/s) \n");
+            printf("3. Milhas por hora (mph) \n");
+            printf("0. Retornar ao menu \n");
+            printf("Opcao: ");
+            scanf("%d", &unidade);
+
+        } while (unidade < 0 || unidade > 3);
+
+        system("cls");
+
+        switch (unidade) {
+
+            case 0:
+                return;
+
+            case 1: // km/h
+                resultado1 = valor / 3.6;          // Conversão para m/s
+                resultado2 = valor * 0.621371;    // Conversão para mph
+                printf("%.2f km/h = %.2f m/s\n", valor, resultado1);
+                printf("%.2f km/h = %.2f mph\n", valor, resultado2);
+                break;
+
+            case 2: // m/s
+                resultado1 = valor * 3.6;         // Conversão para km/h
+                resultado2 = valor * 2.23694;     // Conversão para mph
+                printf("%.2f m/s = %.2f km/h\n", valor, resultado1);
+                printf("%.2f m/s = %.2f mph\n", valor, resultado2);
+                break;
+
+            case 3: // mph
+                resultado1 = valor / 0.621371;    // Conversão para km/h
+                resultado2 = valor / 2.23694;     // Conversão para m/s
+                printf("%.2f mph = %.2f km/h\n", valor, resultado1);
+                printf("%.2f mph = %.2f m/s\n", valor, resultado2);
+                break;
+        }
+
+        printf("\n\nDigite 5 para realizar uma nova conversao de comprimento ou outro valor para retornar ao menu: ");
+        scanf("%d", &opc);
+
+    } while (opc == 5);
+}
