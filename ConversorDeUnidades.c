@@ -14,27 +14,31 @@
 /*       sarahmss <smodesto@student.42sp.org.br>                              */
 /*                                                                            */
 /* ************************************************************************** */
-                     
+
+
+
 #include "ConversorDeUnidades.h"
+#include <stdio.h>
+
+
 
 int main(){
     int opc;
 
-    do
-    {
+    do {
         system("clear");
         printf("Escolha a opcao de conversao desejada: \n");
         printf("1. Comprimento \n");
         printf("2. Potência \n");
         printf("3. Temperatura \n");
         printf("4. Volume \n");
+        printf("5. Dados \n");
 
         printf("0. Sair \n");
         printf("Opcao: ");
         scanf("%d", &opc);
         
-        switch (opc)
-        {
+        switch (opc) {
             case 1:
                 ConversorDeComprimento();
                 break;
@@ -46,13 +50,17 @@ int main(){
                 break;
             case 4:
                 ConversorDeVolume();
-                break; 
+                break;
+            case 5:
+                ConversorDados();
+                break;
             default:
                 break;
         }
-
     } while (opc != 0);
 }
+
+
 
 void ConversorDeComprimento(void){
 
@@ -267,3 +275,268 @@ void ConversorDeTemperatura() {
     getchar();
 }
 
+
+
+void converterBitsParaBytes(double valor) {
+    printf("%.2f Bits = %.2f Bytes\n", valor, valor / 8);
+}
+
+void converterBytesParaBits(double valor) {
+    printf("%.2f Bytes = %.2f Bits\n", valor, valor * 8);
+}
+
+void converterBytesParaKB(double valor) {
+    printf("%.2f Bytes = %.2f KB\n", valor, valor / 1024);
+}
+
+void converterBytesParaMB(double valor) {
+    printf("%.2f Bytes = %.2f MB\n", valor, valor / (1024 * 1024));
+}
+
+void converterBytesParaGB(double valor) {
+    printf("%.2f Bytes = %.2f GB\n", valor, valor / (1024 * 1024 * 1024));
+}
+
+void converterBytesParaTB(double valor) {
+    printf("%.2f Bytes = %.2f TB\n", valor, valor / (1024.0 * 1024 * 1024 * 1024));
+}
+
+void converterKBParaBytes(double valor) {
+    printf("%.2f KB = %.2f Bytes\n", valor, valor * 1024);
+}
+
+void converterKBParaMB(double valor) {
+    printf("%.2f KB = %.2f MB\n", valor, valor / 1024);
+}
+
+void converterKBParaGB(double valor) {
+    printf("%.2f KB = %.2f GB\n", valor, valor / (1024 * 1024));
+}
+
+void converterKBParaTB(double valor) {
+    printf("%.2f KB = %.2f TB\n", valor, valor / (1024.0 * 1024 * 1024));
+}
+
+void converterMBParaKB(double valor) {
+    printf("%.2f MB = %.2f KB\n", valor, valor * 1024);
+}
+
+void converterMBParaBytes(double valor) {
+    printf("%.2f MB = %.2f Bytes\n", valor, valor * 1024 * 1024);
+}
+
+void converterMBParaGB(double valor) {
+    printf("%.2f MB = %.2f GB\n", valor, valor / 1024);
+}
+
+void converterMBParaTB(double valor) {
+    printf("%.2f MB = %.2f TB\n", valor, valor / (1024 * 1024));
+}
+
+void converterGBParaMB(double valor) {
+    printf("%.2f GB = %.2f MB\n", valor, valor * 1024);
+}
+
+void converterGBParaKB(double valor) {
+    printf("%.2f GB = %.2f KB\n", valor, valor * 1024 * 1024);
+}
+
+void converterGBParaBytes(double valor) {
+    printf("%.2f GB = %.2f Bytes\n", valor, valor * 1024 * 1024 * 1024);
+}
+
+void converterGBParaTB(double valor) {
+    printf("%.2f GB = %.2f TB\n", valor, valor / 1024);
+}
+
+void converterTBParaGB(double valor) {
+    printf("%.2f TB = %.2f GB\n", valor, valor * 1024);
+}
+
+void converterTBParaMB(double valor) {
+    printf("%.2f TB = %.2f MB\n", valor, valor * 1024 * 1024);
+}
+
+void converterTBParaKB(double valor) {
+    printf("%.2f TB = %.2f KB\n", valor, valor * 1024 * 1024 * 1024);
+}
+
+void converterTBParaBytes(double valor) {
+    printf("%.2f TB = %.2f Bytes\n", valor, valor * 1024.0 * 1024 * 1024 * 1024);
+}
+
+void converterBitsParaKB(double valor) {
+    printf("%.2f Bits = %.2f KB\n", valor, valor / (8 * 1024));
+}
+
+void converterKBParaBits(double valor) {
+    printf("%.2f KB = %.2f Bits\n", valor, valor * 8 * 1024);
+}
+
+void converterBitsParaMB(double valor) {
+    printf("%.2f Bits = %.2f MB\n", valor, valor / (8 * 1024 * 1024));
+}
+
+void converterMBParaBits(double valor) {
+    printf("%.2f MB = %.2f Bits\n", valor, valor * 8 * 1024 * 1024);
+}
+
+void converterBitsParaGB(double valor) {
+    printf("%.2f Bits = %.2f GB\n", valor, valor / (8 * 1024 * 1024 * 1024));
+}
+
+void converterGBParaBits(double valor) {
+    printf("%.2f GB = %.2f Bits\n", valor, valor * 8 * 1024 * 1024 * 1024);
+}
+
+void converterBitsParaTB(double valor) {
+    printf("%.2f Bits = %.2f TB\n", valor, valor / (8.0 * 1024 * 1024 * 1024 * 1024));
+}
+
+void converterTBParaBits(double valor) {
+    printf("%.2f TB = %.2f Bits\n", valor, valor * 8.0 * 1024 * 1024 * 1024 * 1024);
+}
+
+int ConversorDados() {
+    int opcao;
+    double valor;
+
+    printf("Escolha a conversao que deseja realizar:\n");
+    printf("1. Bits para Bytes\n");
+    printf("2. Bytes para Bits\n");
+    printf("3. Bytes para KB\n");
+    printf("4. Bytes para MB\n");
+    printf("5. Bytes para GB\n");
+    printf("6. Bytes para TB\n");
+    printf("7. KB para Bytes\n");
+    printf("8. KB para MB\n");
+    printf("9. KB para GB\n");
+    printf("10. KB para TB\n");
+    printf("11. MB para KB\n");
+    printf("12. MB para Bytes\n");
+    printf("13. MB para GB\n");
+    printf("14. MB para TB\n");
+    printf("15. GB para MB\n");
+    printf("16. GB para KB\n");
+    printf("17. GB para Bytes\n");
+    printf("18. GB para TB\n");
+    printf("19. TB para GB\n");
+    printf("20. TB para MB\n");
+    printf("21. TB para KB\n");
+    printf("22. TB para Bytes\n");
+    printf("23. Bits para KB\n");
+    printf("24. KB para Bits\n");
+    printf("25. Bits para MB\n");
+    printf("26. MB para Bits\n");
+    printf("27. Bits para GB\n");
+    printf("28. GB para Bits\n");
+    printf("29. Bits para TB\n");
+    printf("30. TB para Bits\n");
+
+    printf("Digite a opcao desejada: ");
+    scanf("%d", &opcao);
+
+    if (opcao < 1 || opcao > 30) {
+        printf("Opcao invalida. \n");
+        return 1;
+    }
+
+    printf("Digite o valor para conversao. ");
+    scanf("%lf", &valor);
+
+    switch (opcao) {
+        case 1:
+            converterBitsParaBytes(valor);
+            break;
+        case 2:
+            converterBytesParaBits(valor);
+            break;
+        case 3:
+            converterBytesParaKB(valor);
+            break;
+        case 4:
+            converterBytesParaMB(valor);
+            break;
+        case 5:
+            converterBytesParaGB(valor);
+            break;
+        case 6:
+            converterBytesParaTB(valor);
+            break;
+        case 7:
+            converterKBParaBytes(valor);
+            break;
+        case 8:
+            converterKBParaMB(valor);
+            break;
+        case 9:
+            converterKBParaGB(valor);
+            break;
+        case 10:
+            converterKBParaTB(valor);
+            break;
+        case 11:
+            converterMBParaKB(valor);
+            break;
+        case 12:
+            converterMBParaBytes(valor);
+            break;
+        case 13:
+            converterMBParaGB(valor);
+            break;
+        case 14:
+            converterMBParaTB(valor);
+            break;
+        case 15:
+            converterGBParaMB(valor);
+            break;
+        case 16:
+            converterGBParaKB(valor);
+            break;
+        case 17:
+            converterGBParaBytes(valor);
+            break;
+        case 18:
+            converterGBParaTB(valor);
+            break;
+        case 19:
+            converterTBParaGB(valor);
+            break;
+        case 20:
+            converterTBParaMB(valor);
+            break;
+        case 21:
+            converterTBParaKB(valor);
+            break;
+        case 22:
+            converterTBParaBytes(valor);
+            break;
+        case 23:
+            converterBitsParaKB(valor);
+            break;
+        case 24:
+            converterKBParaBits(valor);
+            break;
+        case 25:
+            converterBitsParaMB(valor);
+            break;
+        case 26:
+            converterMBParaBits(valor);
+            break;
+        case 27:
+            converterBitsParaGB(valor);
+            break;
+        case 28:
+            converterGBParaBits(valor);
+            break;
+        case 29:
+            converterBitsParaTB(valor);
+            break;
+        case 30:
+            converterTBParaBits(valor);
+            break;
+        default:
+            printf("Opção invalida. \n");
+    }
+    return 0;
+}
