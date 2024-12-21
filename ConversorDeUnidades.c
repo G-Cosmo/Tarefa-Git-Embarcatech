@@ -12,7 +12,7 @@
 /*       EderRenato <eder.casar@outlook.com>                                  */
 /*       Silva-Alisson <als987654@gmail.com>                                  */
 /*       sarahmss <smodesto@student.42sp.org.br>                              */
-/*         Fontana <gui.fontana0701@gmail.com>                                */
+/*       Fontana <gui.fontana0701@gmail.com>                                  */
 /*                                                                            */
 /* ************************************************************************** */
                      
