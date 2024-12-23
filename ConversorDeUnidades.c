@@ -62,6 +62,7 @@ int main(){
                 break; 
             case 7:
                 ConversorDeVelocidade();
+                break;
             case 8:
                 ConversorDeArea();
                 break;

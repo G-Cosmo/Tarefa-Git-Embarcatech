@@ -36,15 +36,15 @@ void ConversorDeArea(void){
 
         switch (unidade)
         {
-        case 1: valorSI = valor; break;
-        case 2: valorSI = valor * 1e-4; break;
-        case 3: valorSI = valor * 1e-6; break;
-        case 4: valorSI = valor * 1e6; break;
-        case 5: valorSI = valor * 1e4;  break;
-        case 6: valorSI = valor * 0.00064516; break;
-        case 7: valorSI = valor * 0.09290304; break;
-        case 8: valorSI = valor * 0.83612736; break;
-        case 9: valorSI = valor * 4046.8564224; break;
+        case 1: valorSI = valor; break; //m2
+        case 2: valorSI = valor * 1e-4; break; //cm2
+        case 3: valorSI = valor * 1e-6; break;  //mm2
+        case 4: valorSI = valor * 1e6; break;   //km2
+        case 5: valorSI = valor * 1e4;  break;  //ha
+        case 6: valorSI = valor * 0.00064516; break;    //in2
+        case 7: valorSI = valor * 0.09290304; break;    //ft2
+        case 8: valorSI = valor * 0.83612736; break;    //yd2
+        case 9: valorSI = valor * 4046.8564224; break;  //ac
         default: printf("Saindo...\n"); return;
         }
 
@@ -57,7 +57,7 @@ void ConversorDeArea(void){
         printf(" %lf %s ----> %lf ft2\n", valor,cUnidade[unidade - 1], valorSI / 0.09290304);
         printf(" %lf %s ----> %lf yd2\n", valor,cUnidade[unidade - 1], valorSI / 0.83612736);
         printf(" %lf %s ----> %lf ac\n", valor,cUnidade[unidade - 1], valorSI / 4046.8564224);
-        printf("\n\nDigite 1 para realizar uma nova conversao de potência ou outro valor para retornar ao menu: \n");
+        printf("\n\nDigite 1 para realizar uma nova conversao de area ou outro valor para retornar ao menu: \n");
         scanf("%d", &opc);
     } while(opc == 1);
 }
