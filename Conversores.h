@@ -31,6 +31,7 @@ void    ConversorDePotencia(void);
 void    ConversorDeTemperatura(void);
 void    ConversorDeTempo(void);
 void    ConversorDeVelocidade(void);
+void    ConversorDeArea(void);
 int     ConversorDeDados();
 void    clear_screen();
 

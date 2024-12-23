@@ -9,7 +9,58 @@ void clear_screen() {
     #endif
 }
 
+void ConversorDeArea(void){
+    double valor, valorSI;
+    int unidade, opc;
+    char cUnidade[9][10] = {"m2", "cm2", "mm2", "km2", "ha", "in2", "ft2", "yd2", "ac"};
 
+    do{
+        clear_screen();
+        printf("Qual a unidade de medida do valor informado? \n");
+        printf("1. Metro Quadrado(m2)\n");
+        printf("2. Centimetro Quadrado(cm2)\n");
+        printf("3. Milimetro Quadrado (mm2)\n");
+        printf("4. Kilometro Quadrado(km2) \n");
+        printf("5. Hectare(ha) \n");
+        printf("6. Polegadas Quadradas(in2)\n");
+        printf("7. Pes Quadrados(ft2)\n");
+        printf("8. Jardas Quadradas(yd2)\n");
+        printf("9. Acre(ac)\n");
+        printf("Para sair pressione qualquer tecla não listada\n");
+        scanf("%d", &unidade);
+
+        clear_screen();
+        printf("Insira o valor que deseja converter: ");
+        scanf(" %lf", &valor);
+        clear_screen();
+
+        switch (unidade)
+        {
+        case 1: valorSI = valor; break;
+        case 2: valorSI = valor * 1e-4; break;
+        case 3: valorSI = valor * 1e-6; break;
+        case 4: valorSI = valor * 1e6; break;
+        case 5: valorSI = valor * 1e4;  break;
+        case 6: valorSI = valor * 0.00064516; break;
+        case 7: valorSI = valor * 0.09290304; break;
+        case 8: valorSI = valor * 0.83612736; break;
+        case 9: valorSI = valor * 4046.8564224; break;
+        default: printf("Saindo...\n"); return;
+        }
+
+        printf(" %lf %s ----> %lf m2\n", valor,cUnidade[unidade - 1], valorSI);
+        printf(" %lf %s ----> %lf cm2\n", valor,cUnidade[unidade - 1], valorSI * 1e4);
+        printf(" %lf %s ----> %lf mm2\n", valor,cUnidade[unidade - 1], valorSI * 1e6);
+        printf(" %lf %s ----> %lf km2\n", valor,cUnidade[unidade - 1], valorSI * 1e-6);
+        printf(" %lf %s ----> %lf ha\n", valor,cUnidade[unidade - 1], valorSI * 1e-4);
+        printf(" %lf %s ----> %lf in2\n", valor,cUnidade[unidade - 1], valorSI / 0.00064516);
+        printf(" %lf %s ----> %lf ft2\n", valor,cUnidade[unidade - 1], valorSI / 0.09290304);
+        printf(" %lf %s ----> %lf yd2\n", valor,cUnidade[unidade - 1], valorSI / 0.83612736);
+        printf(" %lf %s ----> %lf ac\n", valor,cUnidade[unidade - 1], valorSI / 4046.8564224);
+        printf("\n\nDigite 1 para realizar uma nova conversao de potência ou outro valor para retornar ao menu: \n");
+        scanf("%d", &opc);
+    } while(opc == 1);
+}
 
 void ConversorDeComprimento(void){
 
