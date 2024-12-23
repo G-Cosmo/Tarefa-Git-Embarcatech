@@ -11,3 +11,4 @@ Grupo 2 - Subgrupo 6
 - Temperatura
 - Volume
 - Velocidade
+- Tempo
