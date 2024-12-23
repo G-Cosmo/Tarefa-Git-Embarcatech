@@ -1,6 +1,8 @@
 #ignorar a pasta com os executáveis
 output/
 
-.vscode
+.vscode/
 
-.exe
+*.exe
+
+*.o

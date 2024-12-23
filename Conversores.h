@@ -23,7 +23,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-#include <string.h>
+#include<string.h>
 
 void    ConversorDeComprimento(void);
 void    ConversorDeVolume(void);
@@ -31,7 +31,8 @@ void    ConversorDePotencia(void);
 void    ConversorDeTemperatura(void);
 void    ConversorDeTempo(void);
 void    ConversorDeVelocidade(void);
-int    ConversorDeDados();
+int     ConversorDeDados();
+void    clear_screen();
 
 
 #endif

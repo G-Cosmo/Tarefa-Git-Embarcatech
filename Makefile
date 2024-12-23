@@ -3,7 +3,7 @@ EXEC = ConversorDeUnidades.exe
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = ConversorDeUnidades.c
+SRC = ConversorDeUnidades.c Conversores.c
 OBJ = $(SRC:.c=.o)
 
 $(EXEC): $(OBJ)
