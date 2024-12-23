@@ -12,6 +12,7 @@
 /*       EderRenato <eder.casar@outlook.com>                                  */
 /*       Silva-Alisson <als987654@gmail.com>                                  */
 /*       sarahmss <smodesto@student.42sp.org.br>                              */
+/*       MelkBraga <melksb@hotmail.com>                                       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +28,7 @@ void    ConversorDeComprimento(void);
 void    ConversorDeVolume(void);
 void    ConversorDePotencia(void);
 void    ConversorDeTemperatura(void);
+void    ConversorDeVelocidade(void);
 
 
 #endif
