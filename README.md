@@ -10,3 +10,4 @@ Grupo 2 - Subgrupo 6
 - Potência
 - Temperatura
 - Volume
+- Velocidade

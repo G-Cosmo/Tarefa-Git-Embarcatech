@@ -13,6 +13,7 @@
 /*       Silva-Alisson <als987654@gmail.com>                                  */
 /*       sarahmss <smodesto@student.42sp.org.br>                              */
 /*       Fontana <gui.fontana0701@gmail.com>                                  */
+/*       MelkBraga <melksb@hotmail.com>                                       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +30,8 @@ void    ConversorDeVolume(void);
 void    ConversorDePotencia(void);
 void    ConversorDeTemperatura(void);
 void    ConversorDeTempo(void);
+void    ConversorDeVelocidade(void);
+int    ConversorDeDados();
 
 
 #endif
