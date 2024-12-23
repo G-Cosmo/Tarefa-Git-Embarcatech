@@ -12,6 +12,7 @@
 /*       EderRenato <eder.casar@outlook.com>                                  */
 /*       Silva-Alisson <als987654@gmail.com>                                  */
 /*       sarahmss <smodesto@student.42sp.org.br>                              */
+/*       Fontana <gui.fontana0701@gmail.com>                                  */
 /*       MelkBraga <melksb@hotmail.com>                                       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,7 +20,7 @@
 
 
 #include "ConversorDeUnidades.h"
-#include <stdio.h>
+
 
 
 
@@ -34,9 +35,9 @@ int main(){
         printf("2. Potencia \n");
         printf("3. Temperatura \n");
         printf("4. Volume \n");
-        printf("5. Dados \n");
-        printf("6. Velocidade\n");
-
+        printf("5. Tempo \n");
+        printf("6. Dados \n");
+        printf("7. Velocidade\n");
         printf("0. Sair \n");
         printf("Opcao: ");
         scanf("%d", &opc);
@@ -55,11 +56,13 @@ int main(){
                 ConversorDeVolume();
                 break;
             case 5:
-                ConversorDeDados();
+                ConversorDeTempo();
                 break;
             case 6:
-                ConversorDeVelocidade();
+                ConversorDeDados();
                 break; 
+            case 5:
+                ConversorDeVelocidade();
             default:
                 break;
         }
@@ -283,6 +286,56 @@ void ConversorDeTemperatura() {
 
 
 
+void segundosParaOutros(float seg, float *min, float *hora) {
+    *min = seg / 60;
+    *hora = seg / 3600;
+}
+
+void minutosParaOutros(float min, float *seg, float *hora) {
+    *seg = min * 60;
+    *hora = min / 60;
+}
+
+void horasParaOutros(float hora, float *seg, float *min) {
+    *seg = hora * 3600;
+    *min = hora * 60;
+}
+
+void ConversorDeTempo() {
+    float tempo, seg, min, hora;
+    int opcao;
+
+    system("cls");
+    printf("Escolha a escala de entrada: \n");
+    printf("1 - Segundos\n2 - Minutos\n3 - Horas\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+
+    printf("\nTempo: ");
+    scanf("%f", &tempo);
+
+    if (opcao == 1) {
+        segundosParaOutros(tempo, &min, &hora);
+        printf("\nSegundos: %.0f\nMinutos: %.2f\nHoras: %.1f\n\n", tempo, min, hora);
+    
+    }else if(opcao == 2){
+        minutosParaOutros(tempo, &seg, &hora);
+        printf("\nSegundos: %.0f\nMinutos: %.2f\nHoras: %.1f\n\n", seg, tempo, hora);
+
+    }else if(opcao == 3){
+        horasParaOutros(tempo, &seg, &min);
+        printf("\nSegundos: %.0f\nMinutos: %.2f\nHoras: %.1f\n\n", seg, min, tempo);
+
+    }else{
+        printf("Opcao invalida.\n");
+    }
+
+    printf("\nPressione qualquer tecla para retornar ao menu.\n");
+
+    getchar();
+    getchar();
+
+
 void converterBitsParaBytes(double valor) {
     printf("%.2f Bits = %.2f Bytes\n", valor, valor / 8);
 }
@@ -403,7 +456,7 @@ void converterTBParaBits(double valor) {
     printf("%.2f TB = %.2f Bits\n", valor, valor * 8.0 * 1024 * 1024 * 1024 * 1024);
 }
 
-int ConversorDados() {
+int ConversorDeDados() {
     int opcao;
     double valor;
 
