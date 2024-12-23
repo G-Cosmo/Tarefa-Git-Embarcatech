@@ -25,6 +25,7 @@
 int main(){
     int opc;
 
+
     do
     {
         clear_screen();
@@ -62,6 +63,7 @@ int main(){
                 break; 
             case 7:
                 ConversorDeVelocidade();
+                break;
             case 8:
                 ConversorDeArea();
                 break;
