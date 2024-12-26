@@ -57,7 +57,7 @@ void ConversorDeArea(void){
         printf(" %lf %s ----> %lf ft2\n", valor,cUnidade[unidade - 1], valorSI / 0.09290304);
         printf(" %lf %s ----> %lf yd2\n", valor,cUnidade[unidade - 1], valorSI / 0.83612736);
         printf(" %lf %s ----> %lf ac\n", valor,cUnidade[unidade - 1], valorSI / 4046.8564224);
-        printf("\n\nDigite 1 para realizar uma nova conversao de area ou outro valor para retornar ao menu: \n");
+        printf("\n\nDigite 1 para realizar uma nova conversao de área ou outro valor para retornar ao menu: \n");
         scanf("%d", &opc);
     } while(opc == 1);
 }
