@@ -25,6 +25,7 @@
 int main(){
     int opc;
 
+    system("chcp 65001>null");
 
     do
     {
