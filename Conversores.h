@@ -32,6 +32,7 @@ void    ConversorDeTemperatura(void);
 void    ConversorDeTempo(void);
 void    ConversorDeVelocidade(void);
 void    ConversorDeArea(void);
+void    ConversorDeMassa(void);
 int     ConversorDeDados();
 void    clear_screen();
 

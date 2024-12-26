@@ -38,6 +38,7 @@ int main(){
         printf("6. Dados \n");
         printf("7. Velocidade\n");
         printf("8. Area\n");
+        printf("9. Massa\n");
         printf("0. Sair \n");
         printf("Opcao: ");
         scanf("%d", &opc);
@@ -66,6 +67,9 @@ int main(){
                 break;
             case 8:
                 ConversorDeArea();
+                break;
+            case 9:
+                ConversorDeMassa();
                 break;
             default:
                 break;

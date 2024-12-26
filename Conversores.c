@@ -539,3 +539,45 @@ void ConversorDeVelocidade(void) {
 
     } while (opc == 5);
 }
+
+
+void ConversorDeMassa(void) {
+    int opcao;
+    float valor;
+
+    do {
+        printf("\nConversao de Massas:\n");
+        printf("1. Quilograma\n");
+        printf("2. Grama\n");
+        printf("3. Tonelada\n");
+        printf("Escolha a unidade de entrada (1-3): ");
+        scanf("%d", &opcao);
+
+        if (opcao < 1 || opcao > 3) {
+            printf("Opção inválida. Tente novamente.\n");
+            continue;
+        }
+
+        printf("Digite o valor: ");
+        scanf("%f", &valor);
+
+        switch (opcao) {
+            case 1: // Quilograma
+                printf("%.2f quilograma(s) equivalem a %.2f grama(s) e %.6f tonelada(s).\n", 
+                       valor, valor * 1000, valor / 1000);
+                break;
+            case 2: // Grama
+                printf("%.2f grama(s) equivalem a %.6f quilograma(s) e %.6f tonelada(s).\n", 
+                       valor, valor / 1000, valor / 1000000);
+                break;
+            case 3: // Tonelada
+                printf("%.2f tonelada(s) equivalem a %.2f quilograma(s) e %.2f grama(s).\n", 
+                       valor, valor * 1000, valor * 1000000);
+                break;
+        }
+
+        printf("Digite 1 para realizar uma nova conversao ou outro valor para retornar ao menu: ");
+        scanf("%d", &opcao);
+    } while (opcao == 1);
+}
+
