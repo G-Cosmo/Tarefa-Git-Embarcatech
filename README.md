@@ -31,7 +31,7 @@ Werliarlinson de Lima Sá Teles
 
 Para compilar o código basta executar o comando:
 
-_gcc conversordeunidades.c conversores.c -o conversordeunidades_
+_gcc ConversorDeUnidades.c Conversores.c -o conversordeunidades_
 
 Ao utilizar o compilador "gcc".
 
