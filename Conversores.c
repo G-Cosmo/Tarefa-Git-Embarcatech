@@ -9,29 +9,34 @@ void clear_screen() {
     #endif
 }
 
-void ConversorDeArea(void){
+void ConversorDeArea(){
     double valor, valorSI;
     int unidade, opc;
     char cUnidade[9][10] = {"m2", "cm2", "mm2", "km2", "ha", "in2", "ft2", "yd2", "ac"};
 
     do{
         clear_screen();
-        printf("Qual a unidade de medida do valor informado? \n");
-        printf("1. Metro Quadrado(m2)\n");
-        printf("2. Centimetro Quadrado(cm2)\n");
-        printf("3. Milimetro Quadrado (mm2)\n");
-        printf("4. Kilometro Quadrado(km2) \n");
-        printf("5. Hectare(ha) \n");
-        printf("6. Polegadas Quadradas(in2)\n");
-        printf("7. Pes Quadrados(ft2)\n");
-        printf("8. Jardas Quadradas(yd2)\n");
-        printf("9. Acre(ac)\n");
-        printf("Para sair pressione qualquer tecla não listada\n");
-        scanf("%d", &unidade);
 
-        clear_screen();
         printf("Insira o valor que deseja converter: ");
         scanf(" %lf", &valor);
+
+        do{
+        clear_screen();
+
+        printf("Qual a unidade de medida do valor informado? \n\n");
+        printf("1. Metro Quadrado (m2)\n");
+        printf("2. Centimetro Quadrado (cm2)\n");
+        printf("3. Milimetro Quadrado (mm2)\n");
+        printf("4. Kilometro Quadrado (km2) \n");
+        printf("5. Hectare (ha) \n");
+        printf("6. Polegadas Quadradas (in2)\n");
+        printf("7. Pes Quadrados (ft2)\n");
+        printf("8. Jardas Quadradas (yd2)\n");
+        printf("9. Acre (ac)\n");
+        printf("0. Retornar ao menu\n");
+        scanf("%d", &unidade);
+
+        }while(unidade < 0 || unidade > 9);
         clear_screen();
 
         switch (unidade)
@@ -45,7 +50,8 @@ void ConversorDeArea(void){
         case 7: valorSI = valor * 0.09290304; break;    //ft2
         case 8: valorSI = valor * 0.83612736; break;    //yd2
         case 9: valorSI = valor * 4046.8564224; break;  //ac
-        default: printf("Saindo...\n"); return;
+        case 0: return;
+
         }
 
         printf(" %lf %s ----> %lf m2\n", valor,cUnidade[unidade - 1], valorSI);
@@ -62,7 +68,7 @@ void ConversorDeArea(void){
     } while(opc == 1);
 }
 
-void ConversorDeComprimento(void){
+void ConversorDeComprimento(){
 
     double valor, valorSI = 0;
     int opc, unidade = 0;
@@ -70,26 +76,26 @@ void ConversorDeComprimento(void){
 
     do
     { 
-        do
-        {
-            clear_screen();
+        clear_screen();
 
-            printf("Insira o valor que deseja converter: ");
-            scanf("%lf", &valor);
+        printf("Insira o valor que deseja converter: ");
+        scanf("%lf", &valor);
+    
+    do{
+        clear_screen();
 
-            clear_screen();
+        printf("Qual a unidade de medida do valor informado(%lf)? \n\n", valor);
+        printf("1. Metro (m) \n");
+        printf("2. Quilometro (Km) \n");
+        printf("3. Centimetro (cm) \n");
+        printf("4. Milimetro (mm) \n");
+        printf("5. Micrometro (um) \n");
+        printf("0. Retornar ao menu \n");
+        printf("\nOpcao: ");
+        scanf("%d", &unidade);
+   
+    }while(unidade < 0 || unidade > 5);
 
-            printf("Qual a unidade de medida do valor informado(%lf)? \n", valor);
-            printf("1. Metro(m) \n");
-            printf("2. Quilometro(Km) \n");
-            printf("3. Centimetro(cm) \n");
-            printf("4. Milimetro(mm) \n");
-            printf("5. Micrometro(um) \n");
-            printf("0. Retornar ao menu \n");
-            printf("Opcao: ");
-            scanf("%d", &unidade);
-
-        } while (unidade < 0 || unidade > 5);
 
         clear_screen();
 
@@ -131,7 +137,7 @@ void ConversorDeComprimento(void){
     } while(opc == 1);
 }
 
-void ConversorDePotencia(void){
+void ConversorDePotencia(){
     double valor, valorSI;
     int unidade, opc;
     char cUnidade[20];
@@ -140,18 +146,21 @@ void ConversorDePotencia(void){
         clear_screen();
         printf("Insira o valor que deseja converter: ");
         scanf("%lf", &valor);
-        clear_screen();
 
-        printf("Qual a unidade de medida do valor informado? \n");
-        printf("1. Watt(W)\n");
-        printf("2. Quilowatt(kW)\n");
-        printf("3. MegaWatt (MW)\n");
-        printf("4. Cavalo-vapor(cv) \n");
-        printf("5. Cavalo-força(hp) \n");
-        printf("6. British Thermal Unit per hour (BTU/h)\n");
-        printf("Para sair pressione qualquer tecla não listada\n");
-        printf("Sua escolha: ");
-        scanf("%d", &unidade);
+        do{
+            clear_screen();
+            printf("Qual a unidade de medida do valor informado? \n\n");
+            printf("1. Watt (W)\n");
+            printf("2. Quilowatt (kW)\n");
+            printf("3. MegaWatt (MW)\n");
+            printf("4. Cavalo-vapor (cv) \n");
+            printf("5. Cavalo-força (hp) \n");
+            printf("6. British Thermal Unit per hour (BTU/h)\n");
+            printf("0. Para sair\n");
+            printf("\nSua escolha: ");
+            scanf("%d", &unidade);      
+
+        }while(unidade <0 || unidade > 6);
 
         switch (unidade)
         {
@@ -161,7 +170,7 @@ void ConversorDePotencia(void){
         case 4: valorSI = valor * 735.5; strcpy(cUnidade, "cv"); break;
         case 5: valorSI = valor * 745.7; strcpy(cUnidade, "hp"); break;
         case 6: valorSI = valor * 0.293; strcpy(cUnidade, "BTU/h"); break;
-        default: printf("Saindo...\n"); return;
+        case 0: printf("Saindo...\n"); return;
         }
 
         printf("\nO valor em SI é %lf W\n", valorSI);
@@ -190,41 +199,47 @@ double VolConverterParaSI(double valor, int unidade) {
 
 }
 
-void ConversorDeVolume(void) {
+void ConversorDeVolume() {
     double entrada = 0.0;
     int unidade = -1;
     double valor_si = 0.0;
+    int opc;
 
-    clear_screen();
-    printf("Insira o valor que deseja converter: ");
-    scanf("%lf", &entrada);
-
-    while (unidade < 0 || unidade > 3) {
+    do
+    {
+    
+    
         clear_screen();
-        printf("Qual a unidade de medida do valor informado? \n");
-        printf("0. Retornar ao menu \n");
-        printf("1. Metro Cúbico (m³) \n");
-        printf("2. Litro (L) \n");
-        printf("3. Mililitro (ml) \n");
-        printf("Selecione a opção: ");
-        scanf("%d", &unidade);
-    }
+        printf("Insira o valor que deseja converter: ");
+        scanf("%lf", &entrada);
 
-    if (unidade == 0) {
+        while (unidade < 0 || unidade > 3) {
+            clear_screen();
+            printf("Qual a unidade de medida do valor informado? \n");
+            printf("1. Metro Cúbico (m³) \n");
+            printf("2. Litro (L) \n");
+            printf("3. Mililitro (ml) \n");
+            printf("0. Retornar ao menu \n");
+            printf("Selecione a opção: ");
+            scanf("%d", &unidade);
+        }
+
+        if (unidade == 0) {
+            return;
+        }
+
+        valor_si = VolConverterParaSI(entrada, unidade);
+
+        clear_screen();
+        printf(" Valor em Metros Cúbicos (SI): %.6lf m³\n", valor_si);
+        printf(" Valor em Litros: %.6lf L\n", valor_si * 1000.0);
+        printf(" Valor em Mililitros: %.6lf ml\n", valor_si * 1000000.0);
+        printf("\n\nDigite 1 para realizar uma nova conversao de volume ou outro valor para retornar ao menu: \n");
+        scanf("%d", &opc);
+
+    }while(opc == 1);
+
         return;
-    }
-
-    valor_si = VolConverterParaSI(entrada, unidade);
-
-    clear_screen();
-    printf(" Valor em Metros Cúbicos (SI): %.6lf m³\n", valor_si);
-    printf(" Valor em Litros: %.6lf L\n", valor_si * 1000.0);
-    printf(" Valor em Mililitros: %.6lf ml\n", valor_si * 1000000.0);
-    printf("\nPressione qualquer tecla para retornar ao menu.\n");
-
-    getchar();
-    getchar();
-    return;
 }
 
 
@@ -246,33 +261,40 @@ void kelvinParaOutros(double kelvin, double *celsius, double *fahrenheit) {
 
 void ConversorDeTemperatura() {
     double temperatura, celsius, fahrenheit, kelvin;
-    int opcao;
-    clear_screen();
-    printf("\nEscolha a escala de entrada:\n");
-    printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
-    printf("Opcao: ");
-    scanf("%d", &opcao);
+    int opc;
 
-    printf("Digite o valor da temperatura: ");
-    scanf("%lf", &temperatura);
-
-    if (opcao == 1) {
-        celsiusParaOutros(temperatura, &fahrenheit, &kelvin);
-        printf("\nCelsius: %.2f\nFahrenheit: %.2f\nKelvin: %.2f\n\n", temperatura, fahrenheit, kelvin);
-    } else if (opcao == 2) {
-        fahrenheitParaOutros(temperatura, &celsius, &kelvin);
-        printf("\nFahrenheit: %.2f\nCelsius: %.2f\nKelvin: %.2f\n\n", temperatura, celsius, kelvin);
-    } else if (opcao == 3) {
-        kelvinParaOutros(temperatura, &celsius, &fahrenheit);
-        printf("\nKelvin: %.2f\nCelsius: %.2f\nFahrenheit: %.2f\n\n", temperatura, celsius, fahrenheit);
-    } else {
-        printf("Opção inválida.\n");
-    }
+    do
+    {
     
-    printf("\nPressione qualquer tecla para retornar ao menu.\n");
+    
+        clear_screen();
+        printf("\nEscolha a escala de entrada:\n");
+        printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
+        printf("Opcao: ");
+        scanf("%d", &opc);
 
-    getchar();
-    getchar();
+        printf("Digite o valor da temperatura: ");
+        scanf("%lf", &temperatura);
+
+        if (opc == 1) {
+            celsiusParaOutros(temperatura, &fahrenheit, &kelvin);
+            printf("\nCelsius: %.2f\nFahrenheit: %.2f\nKelvin: %.2f\n\n", temperatura, fahrenheit, kelvin);
+        } else if (opc == 2) {
+            fahrenheitParaOutros(temperatura, &celsius, &kelvin);
+            printf("\nFahrenheit: %.2f\nCelsius: %.2f\nKelvin: %.2f\n\n", temperatura, celsius, kelvin);
+        } else if (opc == 3) {
+            kelvinParaOutros(temperatura, &celsius, &fahrenheit);
+            printf("\nKelvin: %.2f\nCelsius: %.2f\nFahrenheit: %.2f\n\n", temperatura, celsius, fahrenheit);
+        } else {
+            printf("Opção inválida.\n");
+        }
+        
+        printf("\n\nDigite 1 para realizar uma nova conversao de temperatura ou outro valor para retornar ao menu: \n");
+        scanf("%d", &opc);
+
+            
+    } while (opc == 1);
+    return;
 }
 
 
@@ -294,192 +316,198 @@ void horasParaOutros(float hora, float *seg, float *min) {
 
 void ConversorDeTempo() {
     float tempo, seg, min, hora;
-    int opcao;
+    int opc;
 
-    clear_screen();
-    printf("Escolha a escala de entrada: \n");
-    printf("1 - Segundos\n2 - Minutos\n3 - Horas\n");
-    printf("Opcao: ");
-    scanf("%d", &opcao);
+    do{
 
-    printf("\nTempo: ");
-    scanf("%f", &tempo);
+        clear_screen();
+        printf("Escolha a escala de entrada: \n");
+        printf("1 - Segundos\n2 - Minutos\n3 - Horas\n");
+        printf("Opcao: ");
+        scanf("%d", &opc);
 
-    if (opcao == 1) {
-        segundosParaOutros(tempo, &min, &hora);
-        printf("\nSegundos: %.0f\nMinutos: %.2f\nHoras: %.1f\n\n", tempo, min, hora);
-    
-    }else if(opcao == 2){
-        minutosParaOutros(tempo, &seg, &hora);
-        printf("\nSegundos: %.0f\nMinutos: %.2f\nHoras: %.1f\n\n", seg, tempo, hora);
+        printf("\nTempo: ");
+        scanf("%f", &tempo);
 
-    }else if(opcao == 3){
-        horasParaOutros(tempo, &seg, &min);
-        printf("\nSegundos: %.0f\nMinutos: %.2f\nHoras: %.1f\n\n", seg, min, tempo);
+        if (opc == 1) {
+            segundosParaOutros(tempo, &min, &hora);
+            printf("\nSegundos: %.0f\nMinutos: %.6f\nHoras: %.1f\n\n", tempo, min, hora);
+        
+        }else if(opc == 2){
+            minutosParaOutros(tempo, &seg, &hora);
+            printf("\nSegundos: %.0f\nMinutos: %.6f\nHoras: %.1f\n\n", seg, tempo, hora);
 
-    }else{
-        printf("Opcao invalida.\n");
-    }
+        }else if(opc == 3){
+            horasParaOutros(tempo, &seg, &min);
+            printf("\nSegundos: %.0f\nMinutos: %.6f\nHoras: %.1f\n\n", seg, min, tempo);
 
-    printf("\nPressione qualquer tecla para retornar ao menu.\n");
+        }else{
+            printf("Opcao invalida.\n");
+        }
 
-    getchar();
-    getchar();
+        printf("\n\nDigite 1 para realizar uma nova conversao de tempo ou outro valor para retornar ao menu: \n");
+        scanf("%d", &opc);
+
+    }while(opc == 1);
+
+    return;
 }
 
-int ConversorDeDados() {
-    int opcao;
+void ConversorDeDados() {
+    int opc;
     double valor;
 
-    clear_screen();
+    do{
 
-    printf("Escolha a conversao que deseja realizar:\n");
-    printf("1. Bits para Bytes\n");
-    printf("2. Bytes para Bits\n");
-    printf("3. Bytes para KB\n");
-    printf("4. Bytes para MB\n");
-    printf("5. Bytes para GB\n");
-    printf("6. Bytes para TB\n");
-    printf("7. KB para Bytes\n");
-    printf("8. KB para MB\n");
-    printf("9. KB para GB\n");
-    printf("10. KB para TB\n");
-    printf("11. MB para KB\n");
-    printf("12. MB para Bytes\n");
-    printf("13. MB para GB\n");
-    printf("14. MB para TB\n");
-    printf("15. GB para MB\n");
-    printf("16. GB para KB\n");
-    printf("17. GB para Bytes\n");
-    printf("18. GB para TB\n");
-    printf("19. TB para GB\n");
-    printf("20. TB para MB\n");
-    printf("21. TB para KB\n");
-    printf("22. TB para Bytes\n");
-    printf("23. Bits para KB\n");
-    printf("24. KB para Bits\n");
-    printf("25. Bits para MB\n");
-    printf("26. MB para Bits\n");
-    printf("27. Bits para GB\n");
-    printf("28. GB para Bits\n");
-    printf("29. Bits para TB\n");
-    printf("30. TB para Bits\n");
+        do{
+            clear_screen();
 
-    printf("Digite a opcao desejada: ");
-    scanf("%d", &opcao);
+            printf("Escolha a conversao que deseja realizar:\n");
+            printf("1. Bits para Bytes\n");
+            printf("2. Bytes para Bits\n");
+            printf("3. Bytes para KB\n");
+            printf("4. Bytes para MB\n");
+            printf("5. Bytes para GB\n");
+            printf("6. Bytes para TB\n");
+            printf("7. KB para Bytes\n");
+            printf("8. KB para MB\n");
+            printf("9. KB para GB\n");
+            printf("10. KB para TB\n");
+            printf("11. MB para KB\n");
+            printf("12. MB para Bytes\n");
+            printf("13. MB para GB\n");
+            printf("14. MB para TB\n");
+            printf("15. GB para MB\n");
+            printf("16. GB para KB\n");
+            printf("17. GB para Bytes\n");
+            printf("18. GB para TB\n");
+            printf("19. TB para GB\n");
+            printf("20. TB para MB\n");
+            printf("21. TB para KB\n");
+            printf("22. TB para Bytes\n");
+            printf("23. Bits para KB\n");
+            printf("24. KB para Bits\n");
+            printf("25. Bits para MB\n");
+            printf("26. MB para Bits\n");
+            printf("27. Bits para GB\n");
+            printf("28. GB para Bits\n");
+            printf("29. Bits para TB\n");
+            printf("30. TB para Bits\n");
 
-    if (opcao < 1 || opcao > 30) {
-        printf("Opcao invalida. \n");
-        return 1;
-    }
+            printf("Digite a opcao desejada: ");
+            scanf("%d", &opc);
+
+        }while(opc < 1 || opc > 30);
 
 
-    printf("Digite o valor para conversao. ");
-    scanf("%lf", &valor);
+        printf("Digite o valor para conversao. ");
+        scanf("%lf", &valor);
 
-    switch (opcao) {
-        case 1:
-            printf("%.2f Bits = %.2f Bytes\n", valor, valor / 8);
-            break;
-        case 2:
-            printf("%.2f Bytes = %.2f Bits\n", valor, valor * 8);
-            break;
-        case 3:
-            printf("%.2f Bytes = %.2f KB\n", valor, valor / 1024);
-            break;
-        case 4:
-            printf("%.2f Bytes = %.2f MB\n", valor, valor / (1024 * 1024));
-            break;
-        case 5:
-            printf("%.2f Bytes = %.2f GB\n", valor, valor / (1024 * 1024 * 1024));
-            break;
-        case 6:
-            printf("%.2f Bytes = %.2f TB\n", valor, valor / (1024.0 * 1024 * 1024 * 1024));
-            break;
-        case 7:
-            printf("%.2f KB = %.2f Bytes\n", valor, valor * 1024);
-            break;
-        case 8:
-            printf("%.2f KB = %.2f MB\n", valor, valor / 1024);
-            break;
-        case 9:
-            printf("%.2f KB = %.2f GB\n", valor, valor / (1024 * 1024));
-            break;
-        case 10:
-            printf("%.2f KB = %.2f TB\n", valor, valor / (1024.0 * 1024 * 1024));
-            break;
-        case 11:
-            printf("%.2f MB = %.2f KB\n", valor, valor * 1024);
-            break;
-        case 12:
-            printf("%.2f MB = %.2f Bytes\n", valor, valor * 1024 * 1024);
-            break;
-        case 13:
-            printf("%.2f MB = %.2f GB\n", valor, valor / 1024);
-            break;
-        case 14:
-            printf("%.2f MB = %.2f TB\n", valor, valor / (1024 * 1024));
-            break;
-        case 15:
-            printf("%.2f GB = %.2f MB\n", valor, valor * 1024);
-            break;
-        case 16:
-            printf("%.2f GB = %.2f KB\n", valor, valor * 1024 * 1024);
-            break;
-        case 17:
-            printf("%.2f GB = %.2f Bytes\n", valor, valor * 1024 * 1024 * 1024);
-            break;
-        case 18:
-            printf("%.2f GB = %.2f TB\n", valor, valor / 1024);
-            break;
-        case 19:
-            printf("%.2f TB = %.2f GB\n", valor, valor * 1024);
-            break;
-        case 20:
-            printf("%.2f TB = %.2f MB\n", valor, valor * 1024 * 1024);
-            break;
-        case 21:
-            printf("%.2f TB = %.2f KB\n", valor, valor * 1024 * 1024 * 1024);
-            break;
-        case 22:
-            printf("%.2f TB = %.2f Bytes\n", valor, valor * 1024.0 * 1024 * 1024 * 1024);
-            break;
-        case 23:
-            printf("%.2f Bits = %.2f KB\n", valor, valor / (8 * 1024));
-            break;
-        case 24:
-            printf("%.2f KB = %.2f Bits\n", valor, valor * 8 * 1024);
-            break;
-        case 25:
-            printf("%.2f Bits = %.2f MB\n", valor, valor / (8 * 1024 * 1024));
-            break;
-        case 26:
-            printf("%.2f MB = %.2f Bits\n", valor, valor * 8 * 1024 * 1024);
-            break;
-        case 27:
-            printf("%.2f Bits = %.2f GB\n", valor, valor / (8LL * 1024 * 1024 * 1024));
-            break;
-        case 28:
-            printf("%.2f GB = %.2f Bits\n", valor, valor * 8 * 1024 * 1024 * 1024);
-            break;
-        case 29:
-            printf("%.2f Bits = %.2f TB\n", valor, valor / (8.0 * 1024 * 1024 * 1024 * 1024));
-            break;
-        case 30:
-            printf("%.2f TB = %.2f Bits\n", valor, valor * 8.0 * 1024 * 1024 * 1024 * 1024);
-            break;
-        default:
-            printf("Opção invalida. \n");
-            break;
-    }
+        switch (opc) {
+            case 1:
+                printf("%.2f Bits = %.2f Bytes\n", valor, valor / 8);
+                break;
+            case 2:
+                printf("%.2f Bytes = %.2f Bits\n", valor, valor * 8);
+                break;
+            case 3:
+                printf("%.2f Bytes = %.2f KB\n", valor, valor / 1024);
+                break;
+            case 4:
+                printf("%.2f Bytes = %.2f MB\n", valor, valor / (1024 * 1024));
+                break;
+            case 5:
+                printf("%.2f Bytes = %.2f GB\n", valor, valor / (1024 * 1024 * 1024));
+                break;
+            case 6:
+                printf("%.2f Bytes = %.2f TB\n", valor, valor / (1024.0 * 1024 * 1024 * 1024));
+                break;
+            case 7:
+                printf("%.2f KB = %.2f Bytes\n", valor, valor * 1024);
+                break;
+            case 8:
+                printf("%.2f KB = %.2f MB\n", valor, valor / 1024);
+                break;
+            case 9:
+                printf("%.2f KB = %.2f GB\n", valor, valor / (1024 * 1024));
+                break;
+            case 10:
+                printf("%.2f KB = %.2f TB\n", valor, valor / (1024.0 * 1024 * 1024));
+                break;
+            case 11:
+                printf("%.2f MB = %.2f KB\n", valor, valor * 1024);
+                break;
+            case 12:
+                printf("%.2f MB = %.2f Bytes\n", valor, valor * 1024 * 1024);
+                break;
+            case 13:
+                printf("%.2f MB = %.2f GB\n", valor, valor / 1024);
+                break;
+            case 14:
+                printf("%.2f MB = %.2f TB\n", valor, valor / (1024 * 1024));
+                break;
+            case 15:
+                printf("%.2f GB = %.2f MB\n", valor, valor * 1024);
+                break;
+            case 16:
+                printf("%.2f GB = %.2f KB\n", valor, valor * 1024 * 1024);
+                break;
+            case 17:
+                printf("%.2f GB = %.2f Bytes\n", valor, valor * 1024 * 1024 * 1024);
+                break;
+            case 18:
+                printf("%.2f GB = %.2f TB\n", valor, valor / 1024);
+                break;
+            case 19:
+                printf("%.2f TB = %.2f GB\n", valor, valor * 1024);
+                break;
+            case 20:
+                printf("%.2f TB = %.2f MB\n", valor, valor * 1024 * 1024);
+                break;
+            case 21:
+                printf("%.2f TB = %.2f KB\n", valor, valor * 1024 * 1024 * 1024);
+                break;
+            case 22:
+                printf("%.2f TB = %.2f Bytes\n", valor, valor * 1024.0 * 1024 * 1024 * 1024);
+                break;
+            case 23:
+                printf("%.2f Bits = %.2f KB\n", valor, valor / (8 * 1024));
+                break;
+            case 24:
+                printf("%.2f KB = %.2f Bits\n", valor, valor * 8 * 1024);
+                break;
+            case 25:
+                printf("%.2f Bits = %.2f MB\n", valor, valor / (8 * 1024 * 1024));
+                break;
+            case 26:
+                printf("%.2f MB = %.2f Bits\n", valor, valor * 8 * 1024 * 1024);
+                break;
+            case 27:
+                printf("%.2f Bits = %.2f GB\n", valor, valor / (8LL * 1024 * 1024 * 1024));
+                break;
+            case 28:
+                printf("%.2f GB = %.2f Bits\n", valor, valor * 8 * 1024 * 1024 * 1024);
+                break;
+            case 29:
+                printf("%.2f Bits = %.2f TB\n", valor, valor / (8.0 * 1024 * 1024 * 1024 * 1024));
+                break;
+            case 30:
+                printf("%.2f TB = %.2f Bits\n", valor, valor * 8.0 * 1024 * 1024 * 1024 * 1024);
+                break;
+            default:
+                printf("Opção invalida. \n");
+                break;
+        }
 
-    getchar();
-    getchar();
+        printf("\n\nDigite 1 para realizar uma nova conversao de dados ou outro valor para retornar ao menu: \n");
+        scanf("%d", &opc);
 
-    return 0;
+    }while (opc == 1);
+
+    return;
 }
 
-void ConversorDeVelocidade(void) {
+void ConversorDeVelocidade() {
 
     double valor, resultado1, resultado2;
     int unidade = 0, opc;
@@ -534,26 +562,29 @@ void ConversorDeVelocidade(void) {
                 break;
         }
 
-        printf("\n\nDigite 5 para realizar uma nova conversao de comprimento ou outro valor para retornar ao menu: ");
+        printf("\n\nDigite 1 para realizar uma nova conversao de velocidade ou outro valor para retornar ao menu: ");
         scanf("%d", &opc);
 
-    } while (opc == 5);
+    } while (opc == 1);
 }
 
 
-void ConversorDeMassa(void) {
-    int opcao;
+void ConversorDeMassa() {
+    int opc;
     float valor;
 
     do {
+
+        clear_screen();
+
         printf("\nConversao de Massas:\n");
         printf("1. Quilograma\n");
         printf("2. Grama\n");
         printf("3. Tonelada\n");
-        printf("Escolha a unidade de entrada (1-3): ");
-        scanf("%d", &opcao);
+        printf("\nEscolha a unidade de entrada (1-3): ");
+        scanf("%d", &opc);
 
-        if (opcao < 1 || opcao > 3) {
+        if (opc < 1 || opc > 3) {
             printf("Opção inválida. Tente novamente.\n");
             continue;
         }
@@ -561,23 +592,23 @@ void ConversorDeMassa(void) {
         printf("Digite o valor: ");
         scanf("%f", &valor);
 
-        switch (opcao) {
+        switch (opc) {
             case 1: // Quilograma
-                printf("%.2f quilograma(s) equivalem a %.2f grama(s) e %.6f tonelada(s).\n", 
+                printf("\n%.2f quilograma(s) equivalem a %.2f grama(s) e %.6f tonelada(s).\n", 
                        valor, valor * 1000, valor / 1000);
                 break;
             case 2: // Grama
-                printf("%.2f grama(s) equivalem a %.6f quilograma(s) e %.6f tonelada(s).\n", 
+                printf("\n%.2f grama(s) equivalem a %.6f quilograma(s) e %.6f tonelada(s).\n", 
                        valor, valor / 1000, valor / 1000000);
                 break;
             case 3: // Tonelada
-                printf("%.2f tonelada(s) equivalem a %.2f quilograma(s) e %.2f grama(s).\n", 
+                printf("\n%.2f tonelada(s) equivalem a %.2f quilograma(s) e %.2f grama(s).\n", 
                        valor, valor * 1000, valor * 1000000);
                 break;
         }
 
-        printf("Digite 1 para realizar uma nova conversao ou outro valor para retornar ao menu: ");
-        scanf("%d", &opcao);
-    } while (opcao == 1);
+        printf("\n\nDigite 1 para realizar uma nova conversao de ou outro valor para retornar ao menu: ");
+        scanf("%d", &opc);
+    } while (opc == 1);
 }
 

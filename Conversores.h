@@ -25,15 +25,15 @@
 #include<math.h>
 #include<string.h>
 
-void    ConversorDeComprimento(void);
-void    ConversorDeVolume(void);
-void    ConversorDePotencia(void);
-void    ConversorDeTemperatura(void);
-void    ConversorDeTempo(void);
-void    ConversorDeVelocidade(void);
-void    ConversorDeArea(void);
-void    ConversorDeMassa(void);
-int     ConversorDeDados();
+void    ConversorDeComprimento();
+void    ConversorDeVolume();
+void    ConversorDePotencia();
+void    ConversorDeTemperatura();
+void    ConversorDeTempo();
+void    ConversorDeVelocidade();
+void    ConversorDeArea();
+void    ConversorDeMassa();
+void     ConversorDeDados();
 void    clear_screen();
 
 
