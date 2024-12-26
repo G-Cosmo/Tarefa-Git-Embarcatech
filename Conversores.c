@@ -34,6 +34,7 @@ void ConversorDeArea(){
         printf("8. Jardas Quadradas (yd2)\n");
         printf("9. Acre (ac)\n");
         printf("0. Retornar ao menu\n");
+        printf("\nOpcao: ");
         scanf("%d", &unidade);
 
         }while(unidade < 0 || unidade > 9);
@@ -173,6 +174,8 @@ void ConversorDePotencia(){
         case 0: printf("Saindo...\n"); return;
         }
 
+        clear_screen();
+
         printf("\nO valor em SI é %lf W\n", valorSI);
         printf(" %lf %s ----> %lf kW\n", valor,cUnidade, valorSI * 1e-3);
         printf(" %lf %s ----> %lf MW\n", valor,cUnidade, valorSI * 1e-6);
@@ -236,6 +239,7 @@ void ConversorDeVolume() {
         printf(" Valor em Mililitros: %.6lf ml\n", valor_si * 1000000.0);
         printf("\n\nDigite 1 para realizar uma nova conversao de volume ou outro valor para retornar ao menu: \n");
         scanf("%d", &opc);
+        unidade = -1;
 
     }while(opc == 1);
 
@@ -270,11 +274,13 @@ void ConversorDeTemperatura() {
         clear_screen();
         printf("\nEscolha a escala de entrada:\n");
         printf("1 - Celsius\n2 - Fahrenheit\n3 - Kelvin\n");
-        printf("Opcao: ");
+        printf("\nOpcao: ");
         scanf("%d", &opc);
 
-        printf("Digite o valor da temperatura: ");
+        printf("\nDigite o valor da temperatura: ");
         scanf("%lf", &temperatura);
+
+        clear_screen();
 
         if (opc == 1) {
             celsiusParaOutros(temperatura, &fahrenheit, &kelvin);
@@ -329,23 +335,25 @@ void ConversorDeTempo() {
         printf("\nTempo: ");
         scanf("%f", &tempo);
 
+        clear_screen();
+
         if (opc == 1) {
             segundosParaOutros(tempo, &min, &hora);
-            printf("\nSegundos: %.0f\nMinutos: %.6f\nHoras: %.1f\n\n", tempo, min, hora);
+            printf("\nSegundos: %.6f\nMinutos: %.6f\nHoras: %.6f\n\n", tempo, min, hora);
         
         }else if(opc == 2){
             minutosParaOutros(tempo, &seg, &hora);
-            printf("\nSegundos: %.0f\nMinutos: %.6f\nHoras: %.1f\n\n", seg, tempo, hora);
+            printf("\nSegundos: %.6f\nMinutos: %.6f\nHoras: %.6f\n\n", seg, tempo, hora);
 
         }else if(opc == 3){
             horasParaOutros(tempo, &seg, &min);
-            printf("\nSegundos: %.0f\nMinutos: %.6f\nHoras: %.1f\n\n", seg, min, tempo);
+            printf("\nSegundos: %.6f\nMinutos: %.6f\nHoras: %.6f\n\n", seg, min, tempo);
 
         }else{
             printf("Opcao invalida.\n");
         }
 
-        printf("\n\nDigite 1 para realizar uma nova conversao de tempo ou outro valor para retornar ao menu: \n");
+        printf("\n\nDigite 1 para realizar uma nova conversao de tempo ou outro valor para retornar ao menu: ");
         scanf("%d", &opc);
 
     }while(opc == 1);
@@ -394,14 +402,16 @@ void ConversorDeDados() {
             printf("29. Bits para TB\n");
             printf("30. TB para Bits\n");
 
-            printf("Digite a opcao desejada: ");
+            printf("\nDigite a opcao desejada: ");
             scanf("%d", &opc);
 
         }while(opc < 1 || opc > 30);
 
 
-        printf("Digite o valor para conversao. ");
+        printf("\nDigite o valor para conversao: ");
         scanf("%lf", &valor);
+
+        clear_screen();
 
         switch (opc) {
             case 1:
@@ -591,6 +601,8 @@ void ConversorDeMassa() {
 
         printf("Digite o valor: ");
         scanf("%f", &valor);
+
+        clear_screen();
 
         switch (opc) {
             case 1: // Quilograma
