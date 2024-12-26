@@ -6,25 +6,25 @@ Grupo 2 - Subgrupo 6
 
 Membros:
 
-Alisson Silva de Pinho
+_Alisson Silva de Pinho_
 
-Eder Renato da Silva Cardoso Casar
+_Eder Renato da Silva Cardoso Casar_
 
-Gabriel Cosmo Oliveira
+_Gabriel Cosmo Oliveira_
 
-Guilherme Fontana Cardoso
+_Guilherme Fontana Cardoso_
 
-Helena Filemon Almeida Silva dos Santos
+_Helena Filemon Almeida Silva dos Santos_
 
-Joey Quadros Pacheco Bastos
+_Joey Quadros Pacheco Bastos_
 
-Melk Silva Braga
+_Melk Silva Braga_
 
-Paulo Cesar da Silva Uehara
+_Paulo Cesar da Silva Uehara_
 
-Sarah Modesto Sanches
+_Sarah Modesto Sanches_
 
-Werliarlinson de Lima Sá Teles
+_Werliarlinson de Lima Sá Teles_
  
 
 # Instruções de compilação
